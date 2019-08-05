@@ -70,7 +70,7 @@ class Demo extends React.Component {
         {
           type: 'string',
           required: true, 
-          message: '请填写姓名'
+          message: 'please input name'
         }
       ],
       email: [
@@ -97,20 +97,20 @@ class Demo extends React.Component {
     console.log(this.state.values.address)
     const address = this.state.values.address.map(item => item.value)
     return (<div>
-      <Panel title="表单验证">
+      <Panel title="form validate">
         <ZarmForm ref={this.formRef} rules={rules} values={this.state.values} onChange={this.onChange}>
           <Input name="name"
-            placeholder="请输入姓名" 
+            placeholder="please input name" 
             value={this.state.values.name} 
             clearable={false} 
-            label="姓名" 
+            label="name" 
             error={getFieldError(this.state.errors, 'name') ? <Error theme="danger" type="warning-round" size="sm">{getFieldError(this.state.errors, 'name')}</Error> : ''}
           />
-          <Input name="email" placeholder="请输入邮箱" value={this.state.values.email} clearable={false} label="邮箱" error={getFieldError(this.state.errors, 'email')}/>
-          <Checkbox.group type="button" name="multiple" label="多选" error={getFieldError(this.state.errors, 'multiple')}>
-            <Checkbox value="0">选项一</Checkbox>
-            <Checkbox value="1">选项二</Checkbox>
-            <Checkbox value="2">选项三</Checkbox>
+          <Input name="email" placeholder="please input email" value={this.state.values.email} clearable={false} label="email" error={getFieldError(this.state.errors, 'email')}/>
+          <Checkbox.group type="button" name="multiple" label="multiple" error={getFieldError(this.state.errors, 'multiple')}>
+            <Checkbox value="0">one</Checkbox>
+            <Checkbox value="1">two</Checkbox>
+            <Checkbox value="2">three</Checkbox>
           </Checkbox.group>
           <Select
             visible={visible}
@@ -119,20 +119,20 @@ class Demo extends React.Component {
             dataSource={dataSource}
             displayRender={selected => selected.map(item => item.label).join('')}
             name="address"
-            label="地址"
+            label="address"
             error={getFieldError(this.state.errors, 'address')}
           />
           <Checkbox 
             value={this.state.values.agreement}
             name="agreement"
             id="agreement"
-            message={<label htmlFor="agreement">阅读并同意<a href="/#" onClick={(e) => { e.preventDefault(); alert('agree it'); }}>《XXX条款》</a>中的相关规定</label>}
+            message={<label htmlFor="agreement">read and agree<a href="/#" onClick={(e) => { e.preventDefault(); alert('agree it'); }}>《XXX》</a>document</label>}
           >
           </Checkbox>
           
         </ZarmForm>
       </Panel> 
-       <Button theme="primary" onClick={this.click} ghost className="submit-button">验证</Button>
+       <Button theme="primary" onClick={this.click} ghost className="submit-button">validate</Button>
     </div>
     )
   }
