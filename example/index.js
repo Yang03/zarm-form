@@ -116,6 +116,7 @@ class Demo extends React.Component {
             visible={visible}
             value={address}
             itemRender={data => data.label}
+            placeholder="please select adress"
             dataSource={dataSource}
             displayRender={selected => selected.map(item => item.label).join('')}
             name="address"
