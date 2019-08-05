@@ -1,22 +1,23 @@
 {
-  "name": "zarm-form-validation",
+  "name": "zarm-form",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack-dev-server --inline --hot --host 0.0.0.0"
+    "dev": "webpack-dev-server --config webpack/dev.js --inline --hot --host 0.0.0.0",
+    "build:example": "webpack --config webpack/build.example.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Yang03/zarm-form-validation.git"
+    "url": "git+https://github.com/Yang03/zarm-form.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Yang03/zarm-form-validation/issues"
+    "url": "https://github.com/Yang03/zarm-form/issues"
   },
-  "homepage": "https://github.com/Yang03/zarm-form-validation#readme",
+  "homepage": "https://github.com/Yang03/zarm-form#readme",
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
