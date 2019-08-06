@@ -62,7 +62,7 @@ import zarm-form
 
 ## API
 
-| 属性 | 类型 | 说明 |
+| Properties | type | description |
 | :--- | :--- | :--- |
 | values | object | default values |
 | rules | array | [async-validator](https://github.com/yiminghe/async-validator) |
