@@ -62,11 +62,10 @@ import zarm-form
 
 ## API
 
-| 属性 | 类型 | 默认值 | 说明 |
-| :--- | :--- | :--- | :--- |
-
+| 属性 | 类型 | 说明 |
+| :--- | :--- | :--- |
 | values | object | default values |
-| rules | array | `async-validator` |
+| rules | array | [async-validator](https://github.com/yiminghe/async-validator) |
 | onChange | function | form item onChange callback |
 
 
