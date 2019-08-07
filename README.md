@@ -2,62 +2,61 @@
 ### Basic Usage
 install 
 ```
-    npm i zarm-form --save
+  npm i zarm-form --save
 ```
 import zarm-form
 
 ```
-   import ZarmForm, { Input, Checkbox, Select, Error, getFieldError } from 'zarm-form'
-   // import style
-   import 'zarm/dist/zarm.min.css'
-   class Example extends React.Component {
-      formRef = React.createRef()
-      constructor() {
-        super()
-        this.state = {
-          values: {
-              name: '',
-          },
-          errors: [],
-        }    
-      }
-      onChange = (values) => {
-        this.setState({
-          values
-        })
-      }
-      submit = () => {
-        this.formRef.current.validate().then((values) => {
-          console.log(values)
-        }).catch(({errors, fields}) => {
-          this.setState({
-              errors: errors
-          })
-        })    
-      }
-      render() {
-        const rules = [
-          {
-            name: {
-              type: 'string',
-              required: true
-            }
-          }
-        ]
-        return (
-          <ZarmForm onChange={this.onChange} values={values} rules={rules} ref={this.formRef}>
-            <Input 
-                placeholder="please input name" 
-                value={this.state.values.name} 
-                clearable={false} 
-                label="name"
-                error={getFiledError(this.state.errors,'name')}
-            />
-            <Button onClick={this.submit}>sumbmit</Button>
-          </ZarmForm>
-        )
+  import ZarmForm, { Input, Checkbox, Select, Error, getFieldError } from 'zarm-form'
+  // import style
+  import 'zarm/dist/zarm.min.css'
+  class Example extends React.Component {
+    formRef = React.createRef()
+    constructor() {
+      super()
+      this.state = {
+        values: {
+            name: '',
+        },
+        errors: [],
+      }    
     }
+    onChange = (values) => {
+      this.setState({
+        values
+      })
+    }
+    submit = () => {
+      this.formRef.current.validate().then((values) => {
+        console.log(values)
+      }).catch(({errors, fields}) => {
+        this.setState({
+            errors: errors
+        })
+      })    
+    }
+    render() {
+      const rules ={
+          name: [{
+            type: 'string',
+            required: true
+          }]
+        }
+      ]
+      return (
+        <ZarmForm onChange={this.onChange} values={values} rules={rules} ref={this.formRef}>
+          <Input 
+              placeholder="please input name" 
+              value={this.state.values.name} 
+              clearable={false} 
+              label="name"
+              error={getFiledError(this.state.errors,'name')}
+          />
+          <Button onClick={this.submit}>sumbmit</Button>
+        </ZarmForm>
+      )
   }
+}
 ```
 
 ## API
