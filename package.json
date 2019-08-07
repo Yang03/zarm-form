@@ -1,11 +1,12 @@
 {
   "name": "zarm-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config webpack/dev.js --inline --hot --host 0.0.0.0",
+    "build": "webpack --config webpack/build.js",
     "build:example": "webpack --config webpack/build.example.js"
   },
   "repository": {
