@@ -2,11 +2,11 @@
   "name": "zarm-form",
   "version": "1.0.1",
   "description": "",
-  "main": "dist/index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --config webpack/dev.js --inline --hot --host 0.0.0.0",
-    "build": "webpack --config webpack/build.js",
+    "build": "babel src --out-dir lib",
     "build:example": "webpack --config webpack/build.example.js"
   },
   "repository": {
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Yang03/zarm-form#readme",
   "devDependencies": {
+    "@babel/cli": "^7.5.5",
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
