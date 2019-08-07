@@ -3,7 +3,6 @@ import schema from 'async-validator'
 
 export default class ZarmForm extends Component {
   onChange = (key, value) => {
-    console.log(value)
     const { onChange, values } = this.props
     values[key] = value
     onChange(values)
