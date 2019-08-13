@@ -4,7 +4,7 @@ import { createErrorElement } from './Error'
 
 export default class Input extends React.PureComponent {
   render() {
-    const { error } = this.props
-    return (<Cell title={this.props.label} help={createErrorElement(error)} hasArrow={this.props.hasArrow}><ZarmInput {...this.props} /></Cell>)
+    const { error, hasArrow, label, ...others } = this.props
+    return (<Cell title={label} help={createErrorElement(error)} hasArrow={hasArrow}><ZarmInput {...others} /></Cell>)
   }
 }

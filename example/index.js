@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Panel, Button } from 'zarm'
-import ZarmForm, { Input, Checkbox, Select, Error, getFieldError } from '../src/'
+import { Panel, Button, Icon } from 'zarm'
+import ZarmForm, { Input, Checkbox, Select, FilePicker, Error, getFieldError } from '../src/'
 
 import 'zarm/dist/zarm.min.css'
 import './example.scss'
@@ -49,7 +49,6 @@ class Demo extends React.Component {
     }
   }
   click = () => {
-    console.log(this.formRef)
     this.formRef.current.validate().then((values) => {
       console.log(values)
     }).catch(({errors, fields}) => {
@@ -85,6 +84,10 @@ class Demo extends React.Component {
           required: true
         }
       ],
+      file: [{
+        type: 'array',
+        required: true
+      }],
       address: [{
         type: 'array',
         required: true
@@ -94,7 +97,6 @@ class Demo extends React.Component {
       }
     }
     const { visible,  dataSource } = this.state
-    console.log(this.state.values.address)
     const address = this.state.values.address.map(item => item.value)
     return (<div>
       <Panel title="form validate">
@@ -123,6 +125,7 @@ class Demo extends React.Component {
             label="address"
             error={getFieldError(this.state.errors, 'address')}
           />
+          <FilePicker name="file" error={getFieldError(this.state.errors, 'file')} label="files" multiple><Icon type="add" size="lg" /></FilePicker>
           <Checkbox 
             value={this.state.values.agreement}
             name="agreement"
@@ -130,6 +133,7 @@ class Demo extends React.Component {
             message={<label htmlFor="agreement">read and agree<a href="/#" onClick={(e) => { e.preventDefault(); alert('agree it'); }}>《XXX》</a>document</label>}
           >
           </Checkbox>
+         
           
         </ZarmForm>
       </Panel> 
