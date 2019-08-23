@@ -63,13 +63,24 @@ class Demo extends React.Component {
       value: values
     })
   }
+  onError = ({errors, fields}) => {
+    this.setState({
+      errors: errors
+    })
+  }
   render() {
     const rules = {
       name: [
         {
           type: 'string',
           required: true, 
-          message: 'please input name'
+          message: 'please input name',
+          trigger: 'blur'
+        }, {
+          min: 3,
+          max: 5,
+          message: 'Length should be 3 to 5',
+          trigger: 'blur'
         }
       ],
       email: [
@@ -81,7 +92,8 @@ class Demo extends React.Component {
       multiple: [
         {
           type: 'array',
-          required: true
+          required: 'true',
+          trigger: 'change'
         }
       ],
       file: [{
@@ -100,7 +112,7 @@ class Demo extends React.Component {
     const address = this.state.values.address.map(item => item.value)
     return (<div>
       <Panel title="form validate">
-        <ZarmForm ref={this.formRef} rules={rules} values={this.state.values} onChange={this.onChange}>
+        <ZarmForm ref={this.formRef} rules={rules} values={this.state.values} onChange={this.onChange} onError={this.onError}>
           <Input name="name"
             placeholder="please input name" 
             value={this.state.values.name} 

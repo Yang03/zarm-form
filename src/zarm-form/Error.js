@@ -8,7 +8,7 @@ export default class Error extends React.PureComponent {
   }
   render() {
     return (<Message theme={this.props.theme}>
-      <Icon type={this.props.type}/>
+      <Icon type={this.props.type} size="sm"/>
       {this.props.children}
     </Message>)
   }
