@@ -1,7 +1,7 @@
 import React from 'react'
 import { Checkbox as ZarmCheckbox, Cell } from 'zarm'
 
-export default class Checkbox extends React.PureComponent {
+class Checkbox extends React.PureComponent {
   render() {
     const { label, ...others } = this.props
     return (<Cell title={label}>
@@ -10,3 +10,6 @@ export default class Checkbox extends React.PureComponent {
     </Cell>)
   }
 }
+
+Checkbox.displayName = 'Checkbox'
+export default Checkbox

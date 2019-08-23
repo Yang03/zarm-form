@@ -61,9 +61,9 @@ export default class ZarmForm extends Component {
   render() {
     const { children, rules, formRef } = this.props
     const inputItems = React.Children.map(children, (element, index) => {
-      const elemetTypeName = element.type.name
+      const elemetTypeName = element.type.displayName
       if (!FORM_ITEM.includes(elemetTypeName)) {
-        console.warn(`${elemetTypeName} is not support, only support ${FORM_ITEM.join(',')}`)
+        console.warn(`only support ${FORM_ITEM.join(',')}`)
         return false
       }
       if (elemetTypeName === 'Input') {
