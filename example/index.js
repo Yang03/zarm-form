@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Panel, Button, Icon } from 'zarm'
-import ZarmForm, { Input, Checkbox, Select, FilePicker, Error, getFieldError } from '../src/'
+import ZarmForm, { Input, Checkbox, Select, FilePicker, DateSelect, Error, getFieldError } from '../src/'
 
 import 'zarm/dist/zarm.min.css'
 import './example.scss'
@@ -102,14 +102,20 @@ class Demo extends React.Component {
       }],
       address: [{
         type: 'array',
-        required: true
+        required: true,
+        trigger: 'change'
+      }],
+      brithday: [{
+        type: 'date',
+        required: true,
+        trigger: 'change'
       }],
       agreement: {
         validator: (rule, value, callback) => { if (value !== true){callback('请阅读协议')}else {callback()}  }
       }
     }
-    const { visible,  dataSource } = this.state
-    const address = this.state.values.address.map(item => item.value)
+    const { visible,  dataSource, address =[] } = this.state
+    const addressValue = address.map(item => item.value)
     return (<div>
       <Panel title="form validate">
         <ZarmForm ref={this.formRef} rules={rules} values={this.state.values} onChange={this.onChange} onError={this.onError}>
@@ -128,14 +134,22 @@ class Demo extends React.Component {
           </Checkbox.group>
           <Select
             visible={visible}
-            value={address}
+            value={addressValue}
             itemRender={data => data.label}
             placeholder="please select adress"
             dataSource={dataSource}
-            displayRender={selected => selected.map(item => item.label).join('')}
+            // displayRender={selected => selected.map(item => item.label).join('')}
             name="address"
             label="address"
             error={getFieldError(this.state.errors, 'address')}
+          />
+          <DateSelect
+            label="brithday"
+            placeholder="brithday"
+            name="brithday"
+            mode = "date"
+            value={this.state.values.brithday}
+            error={getFieldError(this.state.errors, 'brithday')}
           />
           <FilePicker name="file" error={getFieldError(this.state.errors, 'file')} label="files" multiple><Icon type="add" size="lg" /></FilePicker>
           <Checkbox 

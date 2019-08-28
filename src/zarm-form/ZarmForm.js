@@ -1,7 +1,7 @@
 import React, { Component, cloneElement } from 'react'
 import schema from 'async-validator'
 
-const FORM_ITEM = ['Input', 'Checkbox', 'FilePicker', 'Select', 'CheckboxGroup']
+const FORM_ITEM = ['Input', 'Checkbox', 'FilePicker', 'Select', 'DateSelect', 'CheckboxGroup']
 const NOOP = () => {}
 export default class ZarmForm extends Component {
   constructor(props) {
@@ -11,8 +11,9 @@ export default class ZarmForm extends Component {
       fields: {},
     }
   }
-  onChange = (key, value) => {
-    const { onChange, values, rules } = this.props
+  changeValdiate = (key, value) => {
+    console.log(key, value)
+    const {values, rules = [] } = this.props
     values[key] = value
     const rule = rules[key] || []
     const changeRule = rule.filter(item => item.trigger === 'change')
@@ -26,11 +27,19 @@ export default class ZarmForm extends Component {
         this.addError(err, key)
       })
     }
+  }
+  onCancel = (key, value) => {
+    this.changeValdiate(key, value)
+  }
+  onChange = (key, value) => {
+    console.log(value)
+    this.changeValdiate(key, value)
     if (typeof onChange === 'function') {
       onChange(values)
     }
   }
   addError = (err, key) => {
+    console.log(err, key)
     const errors = this.error.errors.concat(err.errors.filter(item => item.field === key))
     this.error = {
       ...this.error,
@@ -59,7 +68,7 @@ export default class ZarmForm extends Component {
     }  
   }
   render() {
-    const { children, rules, formRef } = this.props
+    const { children, rules = [] } = this.props
     const inputItems = React.Children.map(children, (element, index) => {
       const elemetTypeName = element.type.displayName
       if (!FORM_ITEM.includes(elemetTypeName)) {
@@ -89,10 +98,11 @@ export default class ZarmForm extends Component {
           }
         })
       }
-      if (elemetTypeName === 'Select') {
+      if (elemetTypeName === 'Select' || elemetTypeName === 'DateSelect') {
         return cloneElement(element, {
           key: index,
-          onOk: (value) => this.onChange(element.props.name, value), 
+          onOk: (value) => this.onChange(element.props.name, value),
+          onCancel: (value) => this.onCancel(element.props.name, value),
         })
       }
       return cloneElement(element, {
