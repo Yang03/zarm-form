@@ -1,7 +1,7 @@
 import React, { Component, cloneElement } from 'react'
 import schema from 'async-validator'
 
-const FORM_ITEM = ['Input', 'Checkbox', 'FilePicker', 'Select', 'DateSelect', 'CheckboxGroup']
+const FORM_ITEM = ['Input', 'Checkbox', 'FilePicker', 'Select', 'DateSelect', 'CheckboxGroup', 'Radio', 'RadioGroup']
 const NOOP = () => {}
 export default class ZarmForm extends Component {
   constructor(props) {

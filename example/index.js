@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { Panel, Button, Icon } from 'zarm'
-import ZarmForm, { Input, Checkbox, Select, FilePicker, DateSelect, Error, getFieldError } from '../src/'
+import ZarmForm, { Input, Checkbox, Radio, Select, FilePicker, DateSelect, Error, getFieldError } from '../src/'
 
 import 'zarm/dist/zarm.min.css'
 import './example.scss'
@@ -16,6 +16,7 @@ class Demo extends React.Component {
         email: '',
         agreement: false,
         address: [],
+        single: 0
       },
       errors: [],
       visible: false,
@@ -127,6 +128,10 @@ class Demo extends React.Component {
             error={getFieldError(this.state.errors, 'name') ? <Error theme="danger" type="warning-round" size="sm">{getFieldError(this.state.errors, 'name')}</Error> : ''}
           />
           <Input name="email" placeholder="please input email" value={this.state.values.email} clearable={false} label="email" error={getFieldError(this.state.errors, 'email')}/>
+          <Radio.group type="button" name="single" label="single" value={this.state.values.single}>
+            <Radio value="0">one</Radio>
+            <Radio value="1">two</Radio>
+          </Radio.group>
           <Checkbox.group type="button" name="multiple" label="multiple" error={getFieldError(this.state.errors, 'multiple')}>
             <Checkbox value="0">one</Checkbox>
             <Checkbox value="1">two</Checkbox>
