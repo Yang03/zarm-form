@@ -12,7 +12,6 @@ export default class ZarmForm extends Component {
     }
   }
   changeValdiate = (key, value) => {
-    console.log(key, value)
     const {values, rules = [] } = this.props
     values[key] = value
     const rule = rules[key] || []
@@ -32,14 +31,14 @@ export default class ZarmForm extends Component {
     this.changeValdiate(key, value)
   }
   onChange = (key, value) => {
-    console.log(value)
+    const { onChange, values } = this.props
     this.changeValdiate(key, value)
+    values[key] = value
     if (typeof onChange === 'function') {
       onChange(values)
     }
   }
   addError = (err, key) => {
-    console.log(err, key)
     const errors = this.error.errors.concat(err.errors.filter(item => item.field === key))
     this.error = {
       ...this.error,
