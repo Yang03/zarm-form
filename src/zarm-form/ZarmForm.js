@@ -13,7 +13,7 @@ export default class ZarmForm extends Component {
   }
   changeValdiate = (key, value) => {
     const {values, rules = [] } = this.props
-    values[key] = value
+    // values[key] = value
     const rule = rules[key] || []
     const changeRule = rule.filter(item => item.trigger === 'change')
     if (changeRule.length > 0) {
@@ -67,7 +67,7 @@ export default class ZarmForm extends Component {
     }  
   }
   render() {
-    const { children, rules = [] } = this.props
+    const { children, rules = [], values = {} } = this.props
     const inputItems = React.Children.map(children, (element, index) => {
       const elemetTypeName = element.type.displayName
       if (!FORM_ITEM.includes(elemetTypeName)) {
@@ -101,7 +101,7 @@ export default class ZarmForm extends Component {
         return cloneElement(element, {
           key: index,
           onOk: (value) => this.onChange(element.props.name, value),
-          onCancel: (value) => this.onCancel(element.props.name, value),
+          onCancel: (value) => this.onCancel(element.props.name, values[element.props.name]),
         })
       }
       return cloneElement(element, {
