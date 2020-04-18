@@ -1,13 +1,3 @@
-
-zarm-form is a react form component with validate effects, dependent on [zarm](https://github.com/ZhongAnTech/zarm) and [async-validator](https://github.com/yiminghe/async-validator) 
-
-### Basic Usage
-install 
-```
-  npm i zarm-form --save
-```
-example
-```
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {
@@ -18,7 +8,7 @@ import {
   DateSelect,
 } from 'zarm'
 
-import Form from 'zarm-form'
+import Form from '../src/index'
 
 
 export default class Demo extends React.Component {
@@ -84,6 +74,7 @@ export default class Demo extends React.Component {
           label="name"
           name="name"
           className="customer-classname"
+          hasArrow={true}
           rules = {
             [{
               required: true,
@@ -176,25 +167,3 @@ export default class Demo extends React.Component {
 }
 
 ReactDOM.render(<Demo/> , document.getElementById('root'))
-```
-
-## API
-
-Form
-
-| Properties | type | description |
-| :--- | :--- | :--- |
-| errors | object | validate result |
-| rules | array | [async-validator](https://github.com/yiminghe/async-validator) |
-
-Form.item
-
-| Properties | type | description |
-| :--- | :--- | :--- |
-| label | string |  |
-| name | string |  |
-| hasArrow | boolean |  |
-| error | string | validate result |
-| rules | array | [async-validator](https://github.com/yiminghe/async-validator) |
-
-
