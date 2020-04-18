@@ -3,7 +3,7 @@ const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
-  entry: './example/index.js',
+  entry: './example/main.js',
     output: {
       path: path.join(__dirname, '../example'),
       filename: 'example.js'
@@ -12,7 +12,17 @@ module.exports = {
       rules: [{
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              ['import', {
+                libraryName: 'zarm',
+                style: true, // or 'css'
+              }],
+            ]
+          }
+        }]
       },
       {
         test: /\.(css|scss)$/,
@@ -22,6 +32,10 @@ module.exports = {
           {
             loader: "css-loader"
           },
+          
+          {
+            loader: "postcss-loader",
+          },
           {
             loader: 'sass-loader',
             options: {
@@ -29,9 +43,6 @@ module.exports = {
               implementation: require('sass'),
             },
           },
-          {
-            loader: "postcss-loader",
-          }
         ]
       },
       {

@@ -58,15 +58,17 @@
     "plugins": {
       "autoprefixer": {
         "browsers": [
-          "last 5 version"
+          "last 15 version"
         ]
       }
     }
   },
   "dependencies": {
-    "async-validator": "^2.0.1",
+    "async-validator": "^3.2.4",
+    "babel-plugin-import": "^1.13.0",
+    "postcss-scss": "^2.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "zarm": "2.0.0-alpha.54"
+    "zarm": "2.1.0"
   }
 }
