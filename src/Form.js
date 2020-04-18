@@ -63,7 +63,12 @@ export default class Form extends React.Component {
       error = error || getError(errors, name)
       const blurRule = rules.filter(item => item.trigger === 'blur')
       const changeRule = rules.filter(item => item.trigger === 'change')
-      this.formRules[name] = rules
+      if (this.formRules[name]) {
+        this.formRules[name] = this.formRules[name].concat(rules)
+      } else {
+        this.formRules[name] = rules
+      }
+     
       return React.cloneElement(element, {
         error,
         name,

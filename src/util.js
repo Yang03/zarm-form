@@ -4,7 +4,7 @@ export const getError = (errors, name) => {
   for (const error of errors) {
     if (error.field === name) {
       str = error['message']
-      break;
+      break
     }
   }
   return str

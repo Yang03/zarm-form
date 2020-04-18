@@ -5,8 +5,8 @@ import { createErrorElement } from './error'
 
 class FormItem extends React.Component {
   render() {
-    const { children, label, changelistener, blurlistener, className, error, hasArrow } = this.props;
-    const { onChange, onBlur, onOk, ...others } = children.props;
+    const { children, label, changelistener, blurlistener, className, error, hasArrow } = this.props
+    const { onChange, onBlur, onOk, ...others } = children.props
     const change = typeof onOk === 'function' ? 'onOk' : 'onChange' 
 
     const events = {
