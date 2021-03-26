@@ -67,10 +67,10 @@ export default class Demo extends React.Component {
       dataSource,
       address = []
     } = this.state
-    const addressValue = address.map(item => item.value)
+    const addressValue = address.map(Item => Item.value)
     return (
       <Form onError={this.onError} ref={this.formRef} errors={this.state.errors}>
-        <Form.item
+        <Form.Item
           label="name"
           name="name"
           className="customer-classname"
@@ -84,8 +84,8 @@ export default class Demo extends React.Component {
           }
         >
           <Input name="name" maxLength="15" type="text" />
-        </Form.item>
-        <Form.item
+        </Form.Item>
+        <Form.Item
           label="age"
           name="age"
           rules = {
@@ -97,10 +97,10 @@ export default class Demo extends React.Component {
           }
         >
           <Input type="number" name="age" />
-        </Form.item>
-        <Form.item label="multiple" name="multiple" rules={[{
+        </Form.Item>
+        <Form.Item label="multiple" name="multiple" rules={[{
             validator: (rule, value, callback) => {
-              if (Array.isArray(value) && value.length < 2) {
+              if (Array.isArray(value) && value.length >= 2) {
                callback()
                return
               }
@@ -113,8 +113,8 @@ export default class Demo extends React.Component {
             <Checkbox value="1">two</Checkbox>
             <Checkbox value="2">three</Checkbox>
           </Checkbox.Group>
-        </Form.item>
-        <Form.item label="address" name="address" rules={
+        </Form.Item>
+        <Form.Item label="address" name="address" rules={
           [{
             required: true,
             message: 'Please input your adress!',
@@ -124,20 +124,20 @@ export default class Demo extends React.Component {
         }>
           <Select
             value={this.state.address}
-            itemRender={data => data.label}
+            ItemRender={data => data.label}
             placeholder="please select adress"
             dataSource={dataSource}
             onOk = {
               (selected) => {
                 console.log('Select onOk: ', selected);
                 this.setState({
-                  address: selected.map(item => item.value),
+                  address: selected.map(Item => Item.value),
                 });
               }
             }
           />
-        </Form.item>
-        <Form.item label="birthday" name="birthday" rules={
+        </Form.Item>
+        <Form.Item label="birthday" name="birthday" rules={
           [{
             required: true,
             message: 'Please input your birthday!',
@@ -159,7 +159,7 @@ export default class Demo extends React.Component {
               });
             }}
           />
-        </Form.item>
+        </Form.Item>
         <Button onClick={this.submit} theme="primary" ghost>submit</Button>
       </Form>
     )

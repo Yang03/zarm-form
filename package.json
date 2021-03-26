@@ -1,6 +1,6 @@
 {
   "name": "zarm-form",
-  "version": "2.0.0",
+  "version": "2.0.2",
   "description": "react mobile form component with validte effects",
   "main": "./lib/index.js",
   "scripts": {
@@ -68,6 +68,6 @@
     "postcss-scss": "^2.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "zarm": "2.1.0"
+    "zarm": "^2.8.1"
   }
 }

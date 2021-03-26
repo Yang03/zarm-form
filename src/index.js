@@ -1,6 +1,6 @@
 import Form from './Form'
 import FormItem from './FormItem'
 
-Form.item = FormItem
+Form.Item = FormItem
 
 export default Form
