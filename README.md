@@ -7,7 +7,7 @@ install
   npm i zarm-form --save
 ```
 
-### Example
+### Example 
 ```
 import React, {useRef} from 'react'
 import ReactDOM from 'react-dom'
@@ -59,6 +59,9 @@ function Demo() {
 
 ReactDOM.render(<Demo/> , document.getElementById('root'))
 ```
+
+### [Demo on codesandbox](https://codesandbox.io/s/keen-oskar-ns95u?file=/src/App.js) 
+
 ## API
 
 Form
