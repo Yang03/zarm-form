@@ -4,19 +4,16 @@ import { Input, Button } from 'zarm'
 import Form, { useForm } from '../src/index'
 
 const stories = storiesOf('form validate', module);
-stories.add('validate', () => {
+
+
+function Demo() {
   const fromRef = useRef();
   const { handleSubmit, errors, register } = useForm(fromRef);
   const submit = (values) => {
-    console.log(values, 'ffff')
+    console.log(values)
   }
-    return (
-      <div className='story_wrapper'>
-      <h2>how to use?</h2>
-      <h2>example</h2>
-      <div>
-   
-  <Form ref={fromRef} errors={errors}>
+  return(
+    <Form ref={fromRef} errors={errors}>
     <Form.Item
       label="name"
       name="name"
@@ -47,6 +44,16 @@ stories.add('validate', () => {
     </Form.Item>
     <Button onClick={handleSubmit(submit)} theme="primary" ghost block>submit</Button>
   </Form>
+  )
+}
+stories.add('validate', () => {
+ 
+    return (
+      <div className='story_wrapper'>
+      <h2>how to use?</h2>
+      <h2>example</h2>
+      <div>
+        <Demo/>
       </div>
       </div >
     )
