@@ -16,7 +16,7 @@ import {
   Button
 } from 'zarm'
 
-import Form, { useForm } from '../src/index'
+import Form, { useForm } from 'zarm-form'
 
 
 function Demo() {

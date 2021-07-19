@@ -1,13 +1,12 @@
-import React, { useImperativeHandle, useState } from 'react'
+import React, { useImperativeHandle, useState, useRef } from 'react'
 import classnames from 'classnames'
 import schema from 'async-validator'
-import { getError } from  './util'
 
 const Form = React.forwardRef((props, ref) => {
   const [values, setValues] = useState({})
-  const [formRules, setFormRules ] = useState({})
+  const formRules= useRef({})
   useImperativeHandle(ref, () => ({
-    validator: new schema(formRules),
+    validator: new schema(formRules.current),
     values,
   }))
   
@@ -20,13 +19,13 @@ const Form = React.forwardRef((props, ref) => {
     const {name, label, rules = [] } = element.props
     let { error } = element.props
     error = error || errors?.[name]
-    const blurRule = rules?.items.filter(item => item.trigger === 'blur')
-    const changeRule = rules.items.filter(item => item.trigger === 'change')
+    const blurRule = rules?.items?.filter(item => item.trigger === 'blur')
+    const changeRule = rules.items?.filter(item => item.trigger === 'change')
 
-    if (formRules?.[name]) {
-      formRules[name] = formRules[name].concat(rules?.items)
+    if (formRules.current?.[name]) {
+      formRules.current[name] = formRules[name]?.current?.concat(rules?.items)
     } else {
-      formRules[name] = rules?.items
+      formRules.current[name] = rules?.items
     }
     
     return React.cloneElement(element, {

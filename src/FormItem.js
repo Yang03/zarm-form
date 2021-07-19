@@ -49,5 +49,4 @@ function FormItem(props) {
   </Cell>
 }
 
-FormItem.displayName = 'zarm-form-item'
 export default FormItem
