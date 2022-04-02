@@ -9,7 +9,7 @@
     "build": "babel src --out-dir lib",
     "build:example": "webpack --config webpack/build.example.js",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook -s .storybook -o doc",
+    "build-storybook": "build-storybook -s .storybook -o story-doc",
     "build-ts": "tsc -p tsconfig.build.json"
   },
   "repository": {
