@@ -11,6 +11,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Install and Build 🔧
+        uses: actions/setup-node@v3
         with:
           node-version: 14.17.0
         run: | # Install npm packages and build the Storybook files
